@@ -16,8 +16,8 @@ export default {
     methods: {
         getUrlImg(){
             let image;
-            if (this.car.photos != null) {
-                image = 'storage/' + this.car.photos;
+            if (this.car.path_image != null) {
+                image = 'storage/' + this.car.path_image;
             }
             else {
                 image = 'storage/img/car-placeholder.png';
@@ -29,19 +29,18 @@ export default {
 </script>
 <template lang="">
     <div class="col-4">
-    <!-- <router-link :to="{ name: 'single-project', params: { slug: project.slug } }"> -->
+    <router-link class="text-decoration-none" :to="{ name: 'single-car', params: { slug: car.slug } }">
     <div class="card my-3 shadow">
         <img class="rounded-top-1 bg-secondary" :src="getUrlImg()">
         <div class="card-body">
-            <h5 class="card-title text-center my-2">{{car.model}}</h5>
-            <!-- <p class="card-text "><strong></strong> {{car.brand.name}}</p> -->
+            <h5 class="card-title text-center my-2 text-uppercase">{{car.model}}</h5>
+            <p class="card-text "><strong> {{car.brand ? car.brand.name : 'Non definito'}}</strong></p>
             <p class="card-text "><strong>Descrizione:</strong> {{car.description.substr(0,70)+"..."}}</p>
             <p class="card-text"><strong>Prezzo:</strong> {{ car.price }} €</p>
         </div>
     </div>
-    <!-- </router-link> -->
+    </router-link>
 </div>
 </template>
-<style lang="">
-    
+<style lang="scss" scoped>
 </style>

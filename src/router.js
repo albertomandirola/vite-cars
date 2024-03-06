@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import AppHome from './pages/AppHome.vue';
 import AppCars from './pages/AppCars.vue';
+import SingleCar from './pages/SingleCar.vue';
+import AppNotFound from './pages/AppNotFound.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -16,21 +18,16 @@ const router = createRouter({
             name: 'cars',
             component: AppCars
         },
-        // {
-        //     path: '/projects/:slug',
-        //     name: 'single-project',
-        //     component: SingleProject
-        // },
-        // {
-        //     path: '/projects/type/:slug',
-        //     name: 'type-projects',
-        //     component: TypeProjects
-        // },
-        // {
-        //     path: '/:pathMatch(.*)*',
-        //     name: 'not-found',
-        //     component: AppNotFound
-        // }
+        {
+            path: '/cars/:slug',
+            name: 'single-car',
+            component: SingleCar
+        },
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'not-found',
+            component: AppNotFound
+        }
     ]
 });
 
