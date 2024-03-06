@@ -16,11 +16,11 @@ const router = createRouter({
             name: 'cars',
             component: AppCars
         },
-        {
-            path: '/projects/:slug',
-            name: 'single-project',
-            component: SingleProject
-        },
+        // {
+        //     path: '/projects/:slug',
+        //     name: 'single-project',
+        //     component: SingleProject
+        // },
         // {
         //     path: '/projects/type/:slug',
         //     name: 'type-projects',
