@@ -23,6 +23,11 @@ const router = createRouter({
             name: 'single-car',
             component: SingleCar
         },
+        // {
+        //     path: '/cars/brand/:slug',
+        //     name: 'brand-car',
+        //     component: BrandCar
+        // },
         {
             path: '/:pathMatch(.*)*',
             name: 'not-found',
