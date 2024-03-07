@@ -41,7 +41,7 @@ export default {
 }
 </script>
 <template lang="">
-    <div class="container">
+    <div class="container car-card mt-5 ps-4">
         <div class="row">
             <div class="col-12">
                 <h2 class="text-center pt-5 text-uppercase">
@@ -64,6 +64,12 @@ export default {
             <div class="col-6 pt-3">
                 <img class="w-100" :src="getUrlImg()" alt="{{car.model}}">
             </div>
+            <div class="col-12">
+                <div class="text-center">
+                    <!-- Router link to Cars list -->
+                    <router-link to="/cars" class="btn btn-sm btn-outline-light text-uppercase m-4">Torna alla lista delle auto</router-link>
+                </div>
+            </div>
         </div>
             <h2 class="text-center pt-5" v-if="success == false">
                 {{ error }}
@@ -71,5 +77,10 @@ export default {
     </div>
 </template>
 <style lang="scss" scoped>
-    
+    .car-card{
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 16px;
+        color: white;
+        border: 2px solid #000;
+    }
 </style>
