@@ -43,4 +43,12 @@ export default {
 </div>
 </template>
 <style lang="scss" scoped>
+.card {
+    transition: transform 0.3s;
+
+    &:hover {
+        transform: scale(1.05);
+
+    }
+}    
 </style>

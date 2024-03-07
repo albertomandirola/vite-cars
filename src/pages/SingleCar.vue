@@ -9,11 +9,13 @@ export default {
         return {
             store,
             car: null,
-            success: false
+            success: false,
+            fullPrice: 0
         }
     },
     created() {
         this.getCarData();
+        
     },
     methods: {
         getCarData() {
@@ -21,7 +23,9 @@ export default {
                 if(response.data.success){
                     this.car = response.data.car;
                     this.success = response.data.success;
-                    console.log(this.car)
+                    console.log(this.car);
+                    this.getFullPrice();
+
                 }
                 else {
                     this.$router.push({ name: 'not-found'});
@@ -37,6 +41,17 @@ export default {
                 image = 'storage/img/car-placeholder.png';
             }
             return `${this.store.baseUrl}/${image}`;
+        },
+        getFullPrice(){
+
+            let optionalsPrice = 0;
+            this.car.optionals.forEach(optional => {
+                optionalsPrice += optional.price
+            });
+            this.fullPrice = this.car.price + optionalsPrice;
+            console.log(this.fullPrice)
+            console.log(optionalsPrice)
+
         }
     }
 }
@@ -44,13 +59,13 @@ export default {
 <template lang="">
     <div class="container car-card mt-5 ps-4">
         <div class="row">
-            <div style="width: 100%" class="col-12">
+            <div style="width: 100%" class="col-12 ">
                 <h2 class="text-center pt-5 text-uppercase">
                     {{ car.model }}
                 </h2>
             </div>
-            <div  class="col-4">
-                <table class="table">
+            <div  class="col-4 pt-3">
+                <table style='border:none' class="table table-dark">
                     <thead>
                         <tr>
                             <th scope="col">Dettagli</th>
@@ -120,8 +135,24 @@ export default {
                     </tbody>
                 </table>
             </div>
-            <div class="col-6 pt-3">
+            <div class="col-8 pt-3">
                 <img class="w-100" :src="getUrlImg()" :alt='car.model'>
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Prezzo base</th>
+                            <th scope="col">Prezzo con optional</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td>{{ car.price ? car.price : 'Non definito' }}</td>
+                                <td>{{ car.price ? this.fullPrice : 'Non definito' }}</td>
+                            </tr>
+                    </tbody>
+                </table>
+
             </div>
             <div class="col-12">
                 <div class="text-center">
@@ -142,4 +173,10 @@ export default {
         color: white;
         border: 2px solid #000;
     }
+    table tr td, table tr th{
+    background-color: rgba(0,0,0,0.5) !important;
+    border-collapse: collapse;
+    
+}
+
 </style>

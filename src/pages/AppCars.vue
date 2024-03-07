@@ -37,7 +37,7 @@ export default {
                 if(this.success){
                     setTimeout(() => {
                         this.success = false
-                    },3000)
+                    },1000)
                 }
                 this.currentPage = response.data.results.current_page;
                 this.lastPage = response.data.results.last_page;            })
