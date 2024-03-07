@@ -31,16 +31,12 @@ export default {
             }).then((response) => {
                 this.cars = response.data.results.data;
                 this.currentPage = response.data.results.current_page;
-                this.lastPage = response.data.results.last_page;
-                console.log(this.cars);
-            })
+                this.lastPage = response.data.results.last_page;            })
         },
         getBrands(){
             axios.get(`${this.store.baseUrl}/api/brands`, {
             }).then((response) => {
-                this.brands = response.data.results;
-                console.log(response);
-            })
+                this.brands = response.data.results;            })
         }
     }
 }
