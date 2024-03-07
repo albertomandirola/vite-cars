@@ -21,6 +21,7 @@ export default {
                 if(response.data.success){
                     this.car = response.data.car;
                     this.success = response.data.success;
+                    console.log(this.car)
                 }
                 else {
                     this.$router.push({ name: 'not-found'});
@@ -43,26 +44,84 @@ export default {
 <template lang="">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div style="width: 100%" class="col-12">
                 <h2 class="text-center pt-5 text-uppercase">
                     {{ car.model }}
                 </h2>
             </div>
-            <div class="col-6 pt-3">
-                <p class="card-text "><strong>Descrizione:</strong> {{car.description}}</p>
-                <p class="card-text "><strong> {{car.brand ? car.brand.name : 'Non definito'}}</strong></p>
-                <p class="card-text "><strong>Anno:</strong> {{car.year}}</p>
-                <p class="card-text "><strong>Alimentazione:</strong> {{car.type_of_engine}}</p>
-                <p class="card-text "><strong>Cambio:</strong> {{car.type_of_gear}}</p>
-                <p class="card-text "><strong>Porte:</strong> {{car.doors}}</p>
-                <p class="card-text "><strong>Posti:</strong> {{car.seats}}</p>
-                <p class="card-text "><strong>Kw:</strong> {{car.power}}</p>
-                <p class="card-text "><strong>Colore:</strong> {{car.color}}</p>
-                <p class="card-text "><strong>Descrizione:</strong> {{car.description}}</p>
-                <p class="card-text"><strong>Prezzo:</strong> {{ car.price }} €</p>
+            <div  class="col-4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Dettagli</th>
+                            <th scope="col"></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <th scope="row">Modello:</th>
+                                <td>{{ car.model ? car.model : 'Non definito' }}</td>
+                                
+                            </tr>
+                             <tr>
+                                <th scope="row">Brand:</th>
+                                <td>{{ car.brand ? car.brand.name : 'Non definito' }}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th scope="row">Anno:</th>
+                                <td>{{ car.year ? car.year : 'Non definito' }}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th scope="row">Targa:</th>
+                                <td>{{ car.plate ? car.plate : 'Non definito' }}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th scope="row">Alimentazione:</th>
+                                <td>{{ car.type_of_engine ? car.type_of_engine : 'Non definito' }}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th scope="row">Numero di telaio:</th>
+                                <td>{{ car.n_chassis ? car.n_chassis : 'Non definito' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Description:</th>
+                                <td>{{ car.description ? car.description : 'Non definito' }}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th scope="row">Posti:</th>
+                                <td>{{ car.seats ? car.seats : 'Non definito' }}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th scope="row">Porte:</th>
+                                <td>{{ car.doors ? car.doors : 'Non definito'}}</td>
+                        
+                            </tr>
+                            <tr>
+                                <th scope="row">Colore:</th>
+                                <td>{{ car.colors ? car.colors : 'Non definito'}}</td>
+                        
+                            </tr>
+                            <tr>
+                                <th scope="row">N.Cavalli:</th>
+                                <td>{{ car.power ? car.power : 'Non definito'}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Optional</th>
+                                <td>{{ car.optionals ? car.optional : 'Non definito'}}</td>
+                            </tr>
+
+                    </tbody>
+                </table>
             </div>
             <div class="col-6 pt-3">
-                <img class="w-100" :src="getUrlImg()" alt="{{car.model}}">
+                <img class="w-100" :src="getUrlImg()" :alt='car.model'>
             </div>
         </div>
             <h2 class="text-center pt-5" v-if="success == false">
