@@ -35,9 +35,16 @@ export default {
                 this.cars = response.data.results.data;
                 this.success = response.data.success;
                 if(this.success){
-                    setTimeout(() => {
-                        this.success = false
-                    },1000)
+                    if(this.currentPage > 1){
+                        setTimeout(() => {
+                            this.success = false
+                        },500)
+                    }
+                    else{
+                        setTimeout(() => {
+                            this.success = false
+                        },1200)
+                    }
                 }
                 this.currentPage = response.data.results.current_page;
                 this.lastPage = response.data.results.last_page;            })
