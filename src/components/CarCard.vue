@@ -28,7 +28,7 @@ export default {
 }
 </script>
 <template lang="">
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="col-12 col-md-6 col-lg-4 my-3">
     <router-link class="text-decoration-none" :to="{ name: 'single-car', params: { slug: car.slug } }">
     <div class="card shadow h-100">
         <img class="rounded-top-1 bg-secondary" :src="getUrlImg()">
