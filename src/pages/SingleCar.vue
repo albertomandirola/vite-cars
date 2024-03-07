@@ -113,8 +113,8 @@ export default {
                                 <td>{{ car.power ? car.power : 'Non definito'}}</td>
                             </tr>
                             <tr>
-                                <th scope="row">Optional</th>
-                                <td>{{ car.optionals ? car.optional : 'Non definito'}}</td>
+                                <th scope="row">Optionals</th>
+                                <td><span v-for='(optional,index) in car.optionals' :key='index' >{{  optional.name }},</span></td>
                             </tr>
 
                     </tbody>
