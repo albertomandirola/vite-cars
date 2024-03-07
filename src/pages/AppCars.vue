@@ -1,5 +1,6 @@
 <script>
 
+import AppLoader from '../components/AppLoader.vue';
 import axios from 'axios';
 import { store  } from '../store.js';
 import CarCard from '../components/CarCard.vue';
@@ -7,7 +8,8 @@ import CarCard from '../components/CarCard.vue';
 export default {
     name: 'AppCars',
     components: {
-        CarCard
+        CarCard,
+        AppLoader
     },
     data() {
         return {
@@ -15,7 +17,8 @@ export default {
             brands: [],
             store,
             currentPage: 1,
-            lastPage: null
+            lastPage: null,
+            success: false
         }
     },
     created() {
@@ -30,23 +33,26 @@ export default {
                 }
             }).then((response) => {
                 this.cars = response.data.results.data;
+                this.success = response.data.success;
+                if(this.success){
+                    setTimeout(() => {
+                        this.success = false
+                    },3000)
+                }
                 this.currentPage = response.data.results.current_page;
-                this.lastPage = response.data.results.last_page;
-                console.log(this.cars);
-            })
+                this.lastPage = response.data.results.last_page;            })
         },
         getBrands(){
             axios.get(`${this.store.baseUrl}/api/brands`, {
             }).then((response) => {
-                this.brands = response.data.results;
-                console.log(response);
-            })
-        }
+                this.brands = response.data.results;            })
+        },
     }
 }
 </script>
 <template lang="">
-    <div class="container mt-5">
+    <AppLoader v-if="this.success"/>
+    <div class="container mt-5" v-if="!this.success">
         <div class="row">
             <div class="col-12">
                 <h2 class="text-center mt-4 fw-bold">

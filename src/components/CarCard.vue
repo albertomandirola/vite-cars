@@ -28,9 +28,9 @@ export default {
 }
 </script>
 <template lang="">
-    <div class="col-4">
+    <div class="col-4 my-3">
     <router-link class="text-decoration-none" :to="{ name: 'single-car', params: { slug: car.slug } }">
-    <div class="card my-3 shadow">
+    <div class="card shadow h-100">
         <img class="rounded-top-1 bg-secondary" :src="getUrlImg()">
         <div class="card-body">
             <h5 class="card-title text-center my-2 text-uppercase">{{car.model}}</h5>
