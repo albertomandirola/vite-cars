@@ -35,8 +35,8 @@ export default {
         <div class="card-body">
             <h5 class="card-title text-center my-2 text-uppercase">{{car.model}}</h5>
             <p class="card-text "><strong> {{car.brand ? car.brand.name : 'Non definito'}}</strong></p>
-            <p class="card-text "><strong>Descrizione:</strong> {{car.description.substr(0,70)+"..."}}</p>
-            <p class="card-text"><strong>Prezzo:</strong> {{ car.price }} €</p>
+            <p class="card-text "><strong>Descrizione:</strong> {{car.description ? car.description.substr(0,70)+"..." : 'Non definito'}}</p>
+            <p class="card-text"><strong>Prezzo:</strong> {{ car.price ? car.price : '0'}} €</p>
         </div>
     </div>
     </router-link>
