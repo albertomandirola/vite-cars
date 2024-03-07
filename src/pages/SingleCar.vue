@@ -1,10 +1,13 @@
 <script>
-
+import AppLoader from '../components/AppLoader.vue';
 import axios from 'axios';
 import { store } from '../store.js';
 
 export default {
     name: 'SingleCar',
+    components: {
+        AppLoader
+    },
     data() {
         return {
             store,
@@ -23,6 +26,11 @@ export default {
                 if(response.data.success){
                     this.car = response.data.car;
                     this.success = response.data.success;
+                    if(this.success){
+                        setTimeout(() => {
+                            this.success = false
+                        },580)
+                    }
                     console.log(this.car);
                     this.getFullPrice();
 
@@ -57,6 +65,7 @@ export default {
 }
 </script>
 <template lang="">
+    <AppLoader v-if="this.success"/>
     <div class="container car-card mt-5 ps-4">
         <div class="row">
             <div style="width: 100%" class="col-12 ">
