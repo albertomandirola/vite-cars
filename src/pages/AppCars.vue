@@ -45,7 +45,7 @@ export default {
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-center mt-4 fw-bold">
+                <h2 class="text-center mt-4 fw-bold text-white pb-4">
                     Auto Disponibili 
                 </h2>
             </div>
@@ -60,9 +60,9 @@ export default {
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <!-- <router-link :to="{ name: 'type-projects', params: { slug: type.slug } }" class="badge rounded-pill me-2 bg-color-black" v-for="type, index in types" :key="index" >
-                                {{ type.name }}
-                            </router-link> -->
+                            <router-link :to="{ name: 'brand-car', params: { slug: brand.slug } }" class="btn btn-sm btn-dark me-2 mt-2 text-white text-decoration-none" v-for="brand, index in brands" :key="index" >
+                                {{ brand.name }}
+                            </router-link>
                         </div>
                         </div>
                     </div>
@@ -97,7 +97,27 @@ export default {
 </template>
 <style lang="scss" scoped>
     .btn-page {
+        background-color: #D3D3D3;
+        color: #000;
+    }
+
+    button.accordion-button {
+    background-color: lightgray !important;
+    color: black !important;
+        
+        &:focus {
+        z-index: 3;
+        border-color: lightgray;
+        outline: 0!important;
+        box-shadow: 0 0 0 0.25rem rgba(134, 134, 134, 0.25);
+        }
+    }
+    .bg-button-rout{
         background-color: #252525;
         color: #fff;
+        &:hover{
+
+        }
     }
+
 </style>

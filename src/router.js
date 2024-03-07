@@ -4,6 +4,7 @@ import AppHome from './pages/AppHome.vue';
 import AppCars from './pages/AppCars.vue';
 import SingleCar from './pages/SingleCar.vue';
 import AppNotFound from './pages/AppNotFound.vue';
+import BrandCar from './pages/BrandCar.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -23,11 +24,11 @@ const router = createRouter({
             name: 'single-car',
             component: SingleCar
         },
-        // {
-        //     path: '/cars/brand/:slug',
-        //     name: 'brand-car',
-        //     component: BrandCar
-        // },
+        {
+            path: '/cars/brand/:slug',
+            name: 'brand-car',
+            component: BrandCar
+        },
         {
             path: '/:pathMatch(.*)*',
             name: 'not-found',
