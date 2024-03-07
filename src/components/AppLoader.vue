@@ -28,6 +28,9 @@ export default {
 }
 
 .car {
+
+	filter: invert(100%);
+
 	&__body {
 		animation: shake 0.2s ease-in-out infinite alternate;
 	}
